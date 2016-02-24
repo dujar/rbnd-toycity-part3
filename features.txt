@@ -1,0 +1,9 @@
+features.txt
+
+
+
+
+features 1: I have added a quantity variable for trasactions and purchases
+features 2: I have added more details about customers (age and nationality)
+features 3: I have added Better errors for the out of stock error (in case the order is bigger than the available quantity)
+features 4: I have added discount for more than one item purchased items purchased

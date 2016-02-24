@@ -12,7 +12,6 @@ class Product
         @price = options[:price]
         @stock = options[:stock]
         add_to_products
-
     end
 
     def self.all
@@ -21,26 +20,21 @@ class Product
 
     def add_to_products
         if @@id > 1
-            if initializers.include? @title
+            if product_titles.include? @title
                 raise DuplicateProductError, "'#{@title}' already exists!"
             else
-        @@products << self
+                @@products << self
             end
         end
     end
 
-    def initializers 
+    def product_titles
         titles = []
-        prices = []
-        stocks = []
             @@products.each do |item|
                 titles << item.title
-                prices << item.price
-                stocks << item.stock
             end
         titles
     end
-
 
     def self.find_by_title selected_title
         @@products.each do |item|
@@ -48,23 +42,23 @@ class Product
                 found = item
                 return found
             end
-
         end
     end
 
     def self.in_stock
-        stocks = []
+        items = []
             @@products.each do |item|
-                stocks << item.stock
+                if item.stock > 0
+                items << item
+                end
             end
-        return stocks
+        return items
     end
-
 
     def in_stock?
         if stock > 0
             true
-        else 
+        else
             false
         end
     end

@@ -1,0 +1,9 @@
+reflections.txt
+
+
+1.  It tooks me about one day and a half.
+    I worked not with full capacity but I did take my time to think about it during my free time.
+2.  I believe that the most rewarding challenge is the fact that it works not by chance but by carefull analysis of the situations.
+3.  I built a few features for fun actually such as tweaking the out of stock error meesage and adding the quantity in order to make the purchase. I also added more features for the customer to make it a bit more realistic. The discount feature for the products as soon as more than one was also chosen.
+4.  I think in finding the most efficient ways of writing a code. the planning of the architecture of the program I think is paramount once one knows to code. This skill comes usually with time, however there should be sort of guidelines to follow. 
+
