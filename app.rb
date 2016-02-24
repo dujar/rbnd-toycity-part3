@@ -44,10 +44,10 @@ require_relative "lib/transaction"
 
 # TRANSACTIONS
 
- puts "nanoblock stock before transaction: #{nanoblock.stock}"# should return 12
- transaction = Transaction.new(walter, nanoblock, quantity: 3)
- puts "nanoblock stock after transaction: #{nanoblock.stock}"# should return 12 - quantity
- puts "the discount is #{transaction.discount} from #{transaction.product.price}"
+# puts "nanoblock stock before transaction: #{nanoblock.stock}"# should return 12
+ transaction = Transaction.new(walter, nanoblock, quantity: 1)
+# puts "nanoblock stock after transaction: #{nanoblock.stock}"# should return 12 - quantity
+# puts "the discount is #{transaction.discount} from #{transaction.product.price}"
 
  puts transaction.id # Should return 1
  puts transaction.product == nanoblock # Should return true
@@ -63,7 +63,6 @@ require_relative "lib/transaction"
  puts Transaction.all.count # Should return 2
 
  transaction2 = Transaction.find(2)
- puts transaction2.inspect
  puts transaction2.product == nanoblock # Should return true
 
 # walter.purchase(firehouse)
