@@ -19,30 +19,34 @@ class Product
     end
 
     def add_to_products
-        if @@id > 1
             if product_titles.include? @title
                 raise DuplicateProductError, "'#{@title}' already exists!"
             else
                 @@products << self
             end
-        end
     end
 
+
     def product_titles
-        titles = []
+            titles = []
             @@products.each do |item|
                 titles << item.title
             end
-        titles
+           # @products.map{|product| product.title}
+            #it does not work
     end
 
     def self.find_by_title selected_title
         @@products.each do |item|
-            if item.title == selected_title
+           if item.title == selected_title
                 found = item
                 return found
             end
         end
+    end
+
+    def select_item item
+        self.map{|i| i ==item}
     end
 
     def self.in_stock
@@ -50,17 +54,20 @@ class Product
             @@products.each do |item|
                 if item.stock > 0
                 items << item
+                
                 end
             end
-        return items
+           #@@products.select{|product| item.in_stock?}
+           #it does not work when implemented
+       return items
     end
 
     def in_stock?
-        if stock > 0
-            true
-        else
-            false
-        end
+        stock > 0
+    end
+
+    def self.find number
+        @@products[number-1]
     end
 
 

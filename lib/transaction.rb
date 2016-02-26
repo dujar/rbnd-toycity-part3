@@ -9,8 +9,7 @@ class Transaction
         @@id += 1
         @customer = customer_name
         @quantity = options[:quantity] || 1
-        @discount = discount_product product_name
-        @discount = @discount.round(2)
+        @discount = discount_product(product_name).round(2)
         @product = product_name
         if @product.stock == 0 || @product.stock <  @quantity
             raise OutOfStockError, "'#{@product.title}' is ouf of Stock!, there is #{@product.stock} in stock, and you are asking for #{@quantity}"
@@ -21,12 +20,7 @@ class Transaction
     end
 
     def discount_product item
-        if @quantity > 1
-            discounted = item.price * 0.1
-        else
-            discounted = 0
-        end
-        return discounted
+        @quantity > 1 ? item.price*0.1 : 0
     end
 
 
@@ -37,7 +31,4 @@ class Transaction
     def self.find number
         @@transactions[number-1]
     end
-
-
-
 end

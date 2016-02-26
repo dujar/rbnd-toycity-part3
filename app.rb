@@ -2,7 +2,7 @@ require_relative "lib/errors"
 require_relative "lib/customer"
 require_relative "lib/product"
 require_relative "lib/transaction"
-
+require 'pp'
 # PRODUCTS
 
  Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
@@ -10,6 +10,7 @@ require_relative "lib/transaction"
  Product.new(title: "LEGO Firehouse Headquarter", price: 199.99, stock: 0)
 
  puts Product.all.count # Should return 3
+ pp Product.all
 
 # Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
 # Should return DuplicateProductError: 'LEGO Iron Man vs. Ultron' already exists.
@@ -24,18 +25,21 @@ require_relative "lib/transaction"
  puts firehouse.in_stock? # Should return false
 
  products_in_stock = Product.in_stock
+pp  products_in_stock
 # Should return an array of all products with a stock greater than zero
  puts products_in_stock.include?(nanoblock) # Should return true
  puts products_in_stock.include?(firehouse) # Should return false
 
 # CUSTOMERS
 
- Customer.new(name: "Walter Latimer")
  Customer.new(name: "Julia Van Cleve")
+ Customer.new(name: "Walter Latimer")
+
+ pp Customer.all
 
  puts Customer.all.count # Should return 2
 
- Customer.new(name: "Walter Latimer")
+# Customer.new(name: "Walter Latimer")
 # Should return DuplicateCustomerError: 'Walter Latimer' already exists.
 
  walter = Customer.find_by_name("Walter Latimer")
@@ -65,5 +69,5 @@ require_relative "lib/transaction"
  transaction2 = Transaction.find(2)
  puts transaction2.product == nanoblock # Should return true
 
-# walter.purchase(firehouse)
+ walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
