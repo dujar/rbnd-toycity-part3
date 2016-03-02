@@ -13,7 +13,6 @@ class Product
         @stock = options[:stock]
         add_to_products
     end
-
     def self.all
         @@products
     end
@@ -32,7 +31,8 @@ class Product
             @@products.each do |item|
                 titles << item.title
             end
-           # @products.map{|product| product.title}
+            return titles
+           # @@products.map{|product| product.title}
             #it does not work
     end
 
@@ -51,15 +51,15 @@ class Product
 
     def self.in_stock
         items = []
-            @@products.each do |item|
-                if item.stock > 0
-                items << item
-                
-                end
-            end
-           #@@products.select{|product| item.in_stock?}
-           #it does not work when implemented
-       return items
+            #@@products.each do |item|
+             #   if item.stock > 0
+             #   items << item
+             #   end
+            # @@products.each {|item| return item if item.in_stock?}
+            #unforunately it does not allow the include? method to check for nanoproduct
+            #end
+           @@products.select{|product| product.in_stock?}
+       #return items
     end
 
     def in_stock?
